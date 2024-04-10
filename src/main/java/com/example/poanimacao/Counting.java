@@ -26,7 +26,8 @@ public class Counting extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         stage.setTitle("Pesquisa e Ordenacao");
-        AnchorPane pane = new AnchorPane();
+        pane = new AnchorPane();
+        pane.setStyle("-fx-background-color: white;");
         Button botao_inicio = new Button();
         botao_inicio.setLayoutX(440);
         botao_inicio.setLayoutY(100);
@@ -67,7 +68,7 @@ public class Counting extends Application {
         labels[14] = new Label("for(int i=0;i<TL;i++)");
         labels[15] = new Label("    vet[i]=saida[i];");
 
-        botao_inicio.setOnAction(e->{ countingSort(pane,labels);});
+        botao_inicio.setOnAction(e->{ countingSort(labels);});
 
         for (int i = 0; i < labels.length; i++) {
             labels[i].setLayoutX(1000);
@@ -98,7 +99,7 @@ public class Counting extends Application {
         stage.show();
     }
 
-    public void countingSort(AnchorPane pane, Label[] labels)
+    public void countingSort(Label[] labels)
     {
         Image arrowImage = new Image(getClass().getResourceAsStream("/arrow.png"));
         ImageView arrowView = new ImageView(arrowImage);
