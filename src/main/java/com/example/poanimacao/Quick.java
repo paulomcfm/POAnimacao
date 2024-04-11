@@ -18,7 +18,8 @@ import java.util.Set;
 
 public class Quick extends Application {
     AnchorPane pane;
-    Button botao1, botao2, botaoa;
+    Button botao1, botao2;
+    Label labelaux;
     private Button vet[];
     Label label = new Label("Vetor Inicial");
     Label[] labels = new Label[23];
@@ -125,16 +126,16 @@ public class Quick extends Application {
         botao2.setMinWidth(40);
         botao2.setFont(new Font(14));
 
-        botaoa = new Button();
-        botaoa.setLayoutX(300);
-        botaoa.setLayoutY(100);
-        botaoa.setMinHeight(40);
-        botaoa.setMinWidth(40);
-        botaoa.setFont(new Font(14));
+        labelaux= new Label();
+        labelaux.setLayoutX(315);
+        labelaux.setLayoutY(100);
+        labelaux.setMinHeight(40);
+        labelaux.setMinWidth(40);
+        labelaux.setFont(new Font(14));
 
         pane.getChildren().add(botao1);
         pane.getChildren().add(botao2);
-        pane.getChildren().add(botaoa);
+        pane.getChildren().add(labelaux);
 
         Scene scene = new Scene(pane, 1400, 700);
         stage.setScene(scene);
@@ -242,7 +243,7 @@ public class Quick extends Application {
             }
             if (flag) {
                 Platform.runLater(() -> {
-                    botaoa.setText("<");
+                    labelaux.setText("<");
                 });
                 try {
                     Thread.sleep(1000);
@@ -350,7 +351,7 @@ public class Quick extends Application {
                     e.printStackTrace();
                 }
                 Platform.runLater(() -> {
-                    botaoa.setText(">");
+                    labelaux.setText(">");
                 });
                 try {
                     Thread.sleep(1000);
