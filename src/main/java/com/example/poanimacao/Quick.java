@@ -195,6 +195,7 @@ public class Quick extends Application {
                     pane.getChildren().remove(arrowView2);
                     botao1.setText("");
                     botao2.setText("");
+                    descricao.setText("O vetor está ordenado.");
                 });
                 try {
                     Thread.sleep(50);
