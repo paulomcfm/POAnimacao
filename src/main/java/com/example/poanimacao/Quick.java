@@ -26,6 +26,7 @@ public class Quick extends Application {
     String verde = "-fx-background-color: #46c846;";
     String azul = "-fx-background-color: #4596dc;";
     String vermelho = "-fx-background-color: #d62626;";
+    Label descricao;
 
     Image arrowImage = new Image(getClass().getResourceAsStream("/arrow.png"));
     ImageView arrowView = new ImageView(arrowImage);
@@ -42,11 +43,17 @@ public class Quick extends Application {
         pane = new AnchorPane();
         pane.setStyle("-fx-background-color: white;");
         Button botao_inicio = new Button();
-        botao_inicio.setLayoutX(440);
+        botao_inicio.setLayoutX(50);
         botao_inicio.setLayoutY(100);
         botao_inicio.setText("Quick Sort Sem Pivô");
         pane.getChildren().add(botao_inicio);
 
+        descricao = new Label();
+        descricao.setLayoutX(50);
+        descricao.setLayoutY(550);
+        descricao.setFont(new Font("Arial", 20));
+        descricao.setText("Inicie o algoritmo.");
+        pane.getChildren().add(descricao);
 
         label.setLayoutX(5);
         label.setLayoutY(210);
@@ -55,10 +62,14 @@ public class Quick extends Application {
 
         arrowView.setFitWidth(20);
         arrowView.setFitHeight(20);
+        arrowView.setLayoutX(10000);
+        arrowView.setLayoutY(10000);
         pane.getChildren().add(arrowView);
 
         arrowView2.setFitWidth(20);
         arrowView2.setFitHeight(20);
+        arrowView2.setLayoutX(10000);
+        arrowView2.setLayoutY(10000);
         pane.getChildren().add(arrowView2);
 
 
@@ -113,22 +124,22 @@ public class Quick extends Application {
         }
 
         botao1 = new Button();
-        botao1.setLayoutX(250);
-        botao1.setLayoutY(100);
+        botao1.setLayoutX(400);
+        botao1.setLayoutY(50);
         botao1.setMinHeight(40);
         botao1.setMinWidth(40);
         botao1.setFont(new Font(14));
 
         botao2 = new Button();
-        botao2.setLayoutX(350);
-        botao2.setLayoutY(100);
+        botao2.setLayoutX(500);
+        botao2.setLayoutY(50);
         botao2.setMinHeight(40);
         botao2.setMinWidth(40);
         botao2.setFont(new Font(14));
 
         labelaux= new Label();
-        labelaux.setLayoutX(315);
-        labelaux.setLayoutY(100);
+        labelaux.setLayoutX(465);
+        labelaux.setLayoutY(50);
         labelaux.setMinHeight(40);
         labelaux.setMinWidth(40);
         labelaux.setFont(new Font(14));
@@ -169,11 +180,6 @@ public class Quick extends Application {
                 for (int i = 0; i < vet.length; i++) {
                     int finalI = i;
                     Platform.runLater(() -> {
-                        label.setText("Vetor Ordenado");
-                        pane.getChildren().remove(arrowView);
-                        pane.getChildren().remove(arrowView2);
-                        botao1.setText("");
-                        botao2.setText("");
                         vet[finalI].setLayoutY(200);
                         vet[finalI].setStyle(verde);
                     });
@@ -213,6 +219,7 @@ public class Quick extends Application {
             labels[20].setStyle("");
             labels[19].setStyle("");
             labels[6].setStyle(azul);
+            descricao.setText("Conforme o valor do flag, verifica se elementos das posições i e j estão ordenados entre eles.");
         });
         try {
             Thread.sleep(1000);
@@ -235,6 +242,7 @@ public class Quick extends Application {
                 labels[16].setStyle("");
                 labels[6].setStyle("");
                 labels[7].setStyle(azul);
+                descricao.setText("Conforme o valor do flag, verifica se elementos das posições i e j estão ordenados entre eles.");
             });
             try {
                 Thread.sleep(1000);
@@ -261,6 +269,7 @@ public class Quick extends Application {
                     arrowView2.setLayoutY(vet[finalJ6].getLayoutY()+50);
                     botao1.setText(vet[finalI6].getText());
                     botao2.setText(vet[finalJ6].getText());
+
                 });
                 try {
                     Thread.sleep(1000);
@@ -458,6 +467,7 @@ public class Quick extends Application {
                 labels[11].setStyle("");
                 labels[12].setStyle("");
                 if(finalI != finalJ5){
+                    descricao.setText("Realiza a permutação entre os valores não ordenados entre sí.");
                     labels[13].setStyle(azul);
                     labels[14].setStyle(azul);
                     labels[15].setStyle(azul);
@@ -544,9 +554,10 @@ public class Quick extends Application {
             labels[6].setStyle("");
             labels[16].setStyle("");
             labels[18].setStyle(azul);
+            descricao.setText("Realiza chamada recursiva passando os intervalos do vetor que não possuem elementos ordenados.");
         });
         try {
-            Thread.sleep(1000);
+            Thread.sleep(3000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

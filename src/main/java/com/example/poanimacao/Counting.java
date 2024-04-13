@@ -19,6 +19,7 @@ public class Counting extends Application {
     AnchorPane pane;
     Button botao_inicio;
     private Button vet[];
+    Label descricao;
     public static void main(String[] args)
     {
         launch(args);
@@ -29,10 +30,18 @@ public class Counting extends Application {
         pane = new AnchorPane();
         pane.setStyle("-fx-background-color: white;");
         Button botao_inicio = new Button();
-        botao_inicio.setLayoutX(440);
+        botao_inicio.setLayoutX(50);
         botao_inicio.setLayoutY(100);
         botao_inicio.setText("Counting Sort");
         pane.getChildren().add(botao_inicio);
+
+        descricao = new Label();
+        descricao.setLayoutX(150);
+        descricao.setLayoutY(100);
+        descricao.setFont(new Font("Arial", 20));
+        descricao.setText("Inicie o algoritmo.");
+        pane.getChildren().add(descricao);
+
 
         Label label = new Label("Vetor Inicial");
         label.setLayoutX(5);
@@ -116,6 +125,7 @@ public class Counting extends Application {
                     vet[0].setStyle("-fx-background-color: #ee4545;");
                     arrowView.setLayoutX(vet[0].getLayoutX() + vet[0].getWidth() / 2 - arrowView.getFitWidth() / 2);
                     arrowView.setLayoutY(260);
+                    descricao.setText("Procurando o maior elemento do vetor.");
                 });
                 try {
                     Thread.sleep(800);
@@ -188,8 +198,10 @@ public class Counting extends Application {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
+
                 Button[] count = new Button[maior + 1];
                 Platform.runLater(() -> {
+                    descricao.setText("Cria-se um vetor do tamanho do maior elemento mais um.");
                     labels[4].setStyle(azul);
                 });
                 try {
@@ -224,12 +236,14 @@ public class Counting extends Application {
                 Platform.runLater(() -> {pane.getChildren().add(arrowView);});
                 Platform.runLater(() -> {
                     labels[4].setStyle("");
+                    descricao.setText("Incrementando o vetor de contagem na posição do elemento em um.");
                 });
                 try {
                     Thread.sleep(200);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
+
                 for (int i = 0; i < vet.length; i++) {
                     Platform.runLater(() -> {
                         labels[5].setStyle(azul);
@@ -269,6 +283,7 @@ public class Counting extends Application {
                     pane.getChildren().add(arrowView2);
                     labels[6].setStyle("");
                     labels[7].setStyle(azul);
+                    descricao.setText("Incrementa o valor da posição com o valor da posição anterior.");
                 });
                 arrowView2.setLayoutX(110 * 80);
                 arrowView2.setLayoutY(360);
@@ -279,6 +294,7 @@ public class Counting extends Application {
                 }
                 int value = Integer.parseInt(count[0].getText());
                 System.out.println(value);
+
                 for (int i = 1; i < count.length; i++) {
                     final int index = i;
                     Platform.runLater(() -> {
@@ -306,7 +322,10 @@ public class Counting extends Application {
                         e.printStackTrace();
                     }
                 }
-                Platform.runLater(() -> {pane.getChildren().remove(arrowView2);});
+                Platform.runLater(() -> {
+                    descricao.setText("Cria-se um vetor do mesmo tamanho do vetor inicial para receber os elementos ordenados.");
+                    pane.getChildren().remove(arrowView2);
+                });
                 Button[] saida = new Button[vet.length];
 
                 try {
@@ -314,6 +333,7 @@ public class Counting extends Application {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
+
                 for (int i = 0; i < vet.length; i++) {
                     int finalI = i;
                     Platform.runLater(() -> {
@@ -343,6 +363,8 @@ public class Counting extends Application {
                 Platform.runLater(() -> {
                     labels[9].setStyle("");
                     labels[10].setStyle(azul);
+                    descricao.setLayoutY(50);
+                    descricao.setText("Varrendo o vetor inicial em ordem descrescente, o vetor ordenado recebe o valor inicial\n referente a posição do vetor de contagem.\nDecrementa-se o vetor de contagem naquela posição para o caso de valores\n iguais no vetor inicial.");
                 });
                 try {
                     Thread.sleep(1000);
@@ -394,12 +416,15 @@ public class Counting extends Application {
                 Platform.runLater(() -> {
                     labels[10].setStyle("");
                     labels[14].setStyle(azul);
+                    descricao.setLayoutY(100);
+                    descricao.setText("O vetor inicial recebe os valores ordenados do vetor ordenado.");
                 });
                 try {
                     Thread.sleep(300);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
+
                 for (int i = 0; i < vet.length; i++) {
                     int finalI = i;
                     Platform.runLater(() -> {
@@ -431,12 +456,14 @@ public class Counting extends Application {
                     labels[14].setStyle("");
                     pane.getChildren().remove(arrowView);
                     pane.getChildren().remove(arrowView2);
+                    descricao.setText("O vetor está ordenado.");
                 });
                 try {
                     Thread.sleep(800);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
+
                 return null;
             }
         };
